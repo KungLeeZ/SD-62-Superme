@@ -1,0 +1,133 @@
+USE SD_62
+
+/* ============================
+   USER GROUP
+============================ */
+
+INSERT INTO user_group (name, type, description) VALUES
+('Admin', 'SYSTEM', 'System administrator'),
+('Staff', 'SYSTEM', 'Store staff'),
+('Customer', 'SYSTEM', 'End user customer');
+
+
+/* ============================
+   GENDER
+============================ */
+
+INSERT INTO gender (name, description) VALUES
+('Men', 'Male products'),
+('Women', 'Female products'),
+('Unisex', 'For all genders');
+
+
+/* ============================
+   SIZE (SHOE STANDARD)
+============================ */
+
+INSERT INTO size (JP, US_men, US_women, EU, foot_length) VALUES
+(25.0, 7.0, 8.0, 40, 25.0),
+(25.5, 7.5, 8.5, 40.5, 25.5),
+(26.0, 8.0, 9.0, 41, 26.0),
+(26.5, 8.5, 9.5, 42, 26.5),
+(27.0, 9.0, 10.0, 42.5, 27.0),
+(27.5, 9.5, 10.5, 43, 27.5),
+(28.0, 10.0, 11.0, 44, 28.0);
+
+
+/* ============================
+   COLOR
+============================ */
+
+INSERT INTO color (name, hex, description) VALUES
+('Black', '#000000', 'Black color'),
+('White', '#FFFFFF', 'White color'),
+('Red', '#FF0000', 'Red color'),
+('Blue', '#0000FF', 'Blue color'),
+('Green', '#008000', 'Green color'),
+('Gray', '#808080', 'Gray color'),
+('Yellow', '#FFD700', 'Yellow color');
+
+
+/* ============================
+   MATERIAL
+============================ */
+
+INSERT INTO material (name, description) VALUES
+('Leather', 'Genuine leather'),
+('Synthetic', 'Synthetic material'),
+('Canvas', 'Canvas fabric'),
+('Mesh', 'Breathable mesh'),
+('Rubber', 'Rubber sole material');
+
+
+/* ============================
+   FORM (SHOE STYLE)
+============================ */
+
+INSERT INTO form (name, description) VALUES
+('Low Top', 'Low cut shoes'),
+('Mid Top', 'Mid cut shoes'),
+('High Top', 'High cut shoes'),
+('Slip On', 'No lace shoes'),
+('Running', 'Running shoe form');
+
+
+/* ============================
+   PAYMENT METHOD
+============================ */
+
+INSERT INTO payment_method (name, description, status) VALUES
+('COD', 'Cash on Delivery', 'ACTIVE'),
+('Bank Transfer', 'Manual bank transfer', 'ACTIVE'),
+('VNPay', 'VNPay payment gateway', 'ACTIVE'),
+('Momo', 'Momo e-wallet', 'ACTIVE');
+
+
+/* ============================
+   BRAND (SEMI MASTER)
+============================ */
+
+INSERT INTO brand (code, name, description, status) VALUES
+('NIKE', 'Nike', 'Nike sportswear brand', 'ACTIVE'),
+('ADIDAS', 'Adidas', 'Adidas sportswear brand', 'ACTIVE'),
+('PUMA', 'Puma', 'Puma brand', 'ACTIVE'),
+('NB', 'New Balance', 'New Balance brand', 'ACTIVE'),
+('CONVERSE', 'Converse', 'Converse classic brand', 'ACTIVE');
+
+
+/* ============================
+   SEASON (SEMI MASTER)
+============================ */
+
+INSERT INTO season (season_code, name, year, description) VALUES
+('SS24', 'Spring Summer 2024', 2024, 'Spring summer collection'),
+('FW24', 'Fall Winter 2024', 2024, 'Fall winter collection'),
+('SS25', 'Spring Summer 2025', 2025, 'Spring summer collection'),
+('FW25', 'Fall Winter 2025', 2025, 'Fall winter collection');
+
+
+/* ============================
+   USER ADMIN
+============================ */
+
+
+INSERT INTO [dbo].[user] (
+    create_at,
+    update_at,
+    email,
+    name,
+    phone,
+    status,
+    group_id,
+    password
+)
+VALUES (
+    GETDATE(),
+    GETDATE(),
+    'admin',
+    N'System Administrator',
+    '0900000000',
+    'ACTIVE',
+    1,
+    '123'
+);
