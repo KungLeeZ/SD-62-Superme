@@ -30,6 +30,9 @@ public class User {
     @Column(name = "phone", columnDefinition = "varchar(255)")
     private String phone;
 
+    @Column(name = "password", columnDefinition = "varchar(255)")
+    private String password;
+
     @Column(name = "create_at")
     private LocalDateTime createAt;
 
