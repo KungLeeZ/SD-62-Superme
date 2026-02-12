@@ -1,11 +1,19 @@
-<script setup></script>
-
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
-</template>
+  <div div id="app" class="d-flex flex-column min-vh-100">
+    <!-- Header -->
+    <Header />
 
-<style scoped></style>
+    <!-- Nội dung chính (thêm padding-top để không bị che) -->
+    <main class="flex-grow-1 p-4 pt-5 mb-lg-5">
+      <router-view />
+    </main>
+
+    <!-- Footer -->
+    <Footer />
+  </div>
+</template>
+<script setup>
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+</script>
+
