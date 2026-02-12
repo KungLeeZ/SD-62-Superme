@@ -7,8 +7,10 @@ import com.example.sd_62.user.dto.request.RegisterRequest;
 import com.example.sd_62.user.dto.response.AuthResponse;
 import com.example.sd_62.user.entity.RefreshToken;
 import com.example.sd_62.user.entity.User;
+import com.example.sd_62.user.entity.UserGroup;
 import com.example.sd_62.user.enums.UserStatus;
 import com.example.sd_62.user.repository.RefreshTokenRepository;
+import com.example.sd_62.user.repository.UserGroupRepository;
 import com.example.sd_62.user.repository.UserRepository;
 import com.example.sd_62.user.service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +36,7 @@ public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final RefreshTokenRepository refreshTokenRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserGroupRepository userGroupRepository;
 
     @Override
     public AuthResponse login(LoginRequest request) {
@@ -97,7 +100,14 @@ public class AuthServiceImpl implements AuthService {
             throw new RuntimeException("Mật khẩu phải có ít nhất 6 ký tự");
         }
 
-        // Tạo user mới
+        // ===== QUAN TRỌNG: TÌM HOẶC TẠO CUSTOMER GROUP =====
+        UserGroup customerGroup = userGroupRepository.findByName("Khách hàng")
+                .orElseGet(null);
+
+        log.info("Assigning user to group: {} (ID: {})",
+                customerGroup.getName(), customerGroup.getId());
+
+        // Tạo user mới với group CUSTOMER
         User user = new User();
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -106,12 +116,13 @@ public class AuthServiceImpl implements AuthService {
         user.setCreateAt(LocalDateTime.now());
         user.setUpdateAt(LocalDateTime.now());
         user.setStatus(UserStatus.ACTIVE);
-
-        // Note: User group sẽ được set mặc định ở UserService khi tạo user
-        // Hoặc cần inject UserGroupRepository để set default group
+        user.setGroup(customerGroup);
+        user.setEmailVerified(false);
+        user.setAvatarUrl(null);
 
         User savedUser = userRepository.save(user);
-        log.info("Registered successfully for email: {}", request.getEmail());
+        log.info("Registered successfully for email: {} with CUSTOMER role",
+                request.getEmail());
 
         // Tự động login sau khi register
         LoginRequest loginRequest = new LoginRequest();

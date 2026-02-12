@@ -30,7 +30,7 @@ public class CustomUserDetails implements UserDetails, OAuth2User {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // Dựa vào type của UserGroup để phân quyền
-        String role = "ROLE_" + user.getGroup().getType().name();
+        String role = "ROLE_" + user.getGroup().getType();
         return Collections.singletonList(new SimpleGrantedAuthority(role));
     }
 

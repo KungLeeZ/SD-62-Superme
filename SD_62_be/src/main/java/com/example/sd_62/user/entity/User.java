@@ -1,4 +1,5 @@
 package com.example.sd_62.user.entity;
+import com.example.sd_62.user.enums.UserGroupType;
 import com.example.sd_62.user.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class User {
     @Column(name = "email", columnDefinition = "varchar(255)")
     private String email;
 
+    @Enumerated(EnumType.STRING)
     @ManyToOne
     @JoinColumn(name = "group_id", referencedColumnName = "id", nullable = false)
     private UserGroup group;

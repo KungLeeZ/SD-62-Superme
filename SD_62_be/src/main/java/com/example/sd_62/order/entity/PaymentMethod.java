@@ -1,13 +1,15 @@
 package com.example.sd_62.order.entity;
 import com.example.sd_62.order.enums.PaymentStatus;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "payment_method")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PaymentMethod {
 
     @Id
