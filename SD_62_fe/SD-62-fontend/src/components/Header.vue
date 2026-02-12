@@ -7,12 +7,12 @@
       <div class="container-fluid d-flex align-items-center justify-content-between">
         <!-- 🟢 Logo -->
         <router-link class="nav-link active" to="/">
-          <img
-              src="@/assets/logo_ngang.jpg"
-              alt="Logo"
-              width="150"
-              class="d-inline-block align-text-top me-2"
-          />
+<!--          <img-->
+<!--&lt;!&ndash;              src="@/assets/logo_ngang.jpg"&ndash;&gt;-->
+<!--              alt="Logo"-->
+<!--              width="150"-->
+<!--              class="d-inline-block align-text-top me-2"-->
+<!--          />-->
         </router-link>
 
         <!-- 🟡 Menu bên trái -->
@@ -39,22 +39,13 @@
               <li v-if="user.roleName === 'ADMIN'">
                 <router-link class="dropdown-item" to="/users">Tài khoản</router-link>
               </li>
-              <li><router-link class="dropdown-item" to="/authors">Tác giả</router-link></li>
-              <li><router-link class="dropdown-item" to="/books">Sách</router-link></li>
-              <li><router-link class="dropdown-item" to="/book-variants">Phiên bản sách</router-link></li>
-              <li><router-link class="dropdown-item" to="/book-copy">Bản ghi sách</router-link></li>
-              <li><router-link class="dropdown-item" to="/publishers">Nhà xuất bản</router-link></li>
-              <li><router-link class="dropdown-item" to="/documents">Loại tài liệu</router-link></li>
-              <li><router-link class="dropdown-item" to="/categories">Thể loại</router-link></li>
-              <li><router-link class="dropdown-item" to="/languages">Ngôn ngữ</router-link></li>
-              <li><router-link class="dropdown-item" to="/bills">Hóa đơn nhập sách</router-link></li>
-              <li><router-link class="dropdown-item" to="/announcements">Thông báo</router-link></li>
+              <li><router-link class="dropdown-item" to="/products">Sản phẩm</router-link></li>
             </ul>
           </li>
 
           <!-- 🧠 Reader -->
           <li v-if="!user || user.roleName === 'READER'" class="nav-item me-3">
-            <router-link class="nav-link" to="/booksReader">Sách Reader</router-link>
+            <router-link class="nav-link" to="/store">Store</router-link>
           </li>
 
           <li class="nav-item me-3">
