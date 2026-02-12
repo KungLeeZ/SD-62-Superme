@@ -1,13 +1,15 @@
 package com.example.sd_62.product.entity;
 import com.example.sd_62.product.enums.BrandStatus;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "brand")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Brand {
 
     @Id

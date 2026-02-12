@@ -1,7 +1,6 @@
 package com.example.sd_62.product.entity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -9,6 +8,9 @@ import java.math.BigDecimal;
 @Table(name = "size")
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Size {
 
     @Id
